@@ -43,13 +43,15 @@ class ImportUsersData implements ShouldQueue
         
         $data = $listener->getJson();   
         
-        $chunks = array_chunk($data, 1000);
+        $chunks = array_chunk($data, 1000); 
 
-        foreach ($chunks as $chunk) {
-            $data = $this->prepareData($chunk);
-            User::insert($data);
-        }
-        
+        DB::transaction(function () use ($chunks) {
+            foreach ($chunks as $chunk) {
+                $data = $this->prepareData($chunk);
+                User::insert($data);
+            }    
+        });
+
         fclose($stream);
     }
 

@@ -9,6 +9,8 @@ class HomeController extends Controller
 {
     public function processFile()
     {
-    	ImportUsersData::dispatch();	
+    	ImportUsersData::dispatch();
+
+    	return 'success';
     }
 }
