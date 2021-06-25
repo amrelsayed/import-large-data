@@ -5,7 +5,7 @@ and by doing that inside a transaction will make sure that all data either will 
 
 - Added a simple adapter implementation in case we have another client that sends another data formats.
 
-## possipole improvments 
+## Possible Improvements
 
 - If we have larger set's of data we could split them into multiple jobs and batches them, or we could also split the main file into smaller files and work on each one of them individually.
 
